@@ -4,7 +4,7 @@ GO
 SET quoted_identifier ON 
 GO 
 
-ALTER PROCEDURE [dbo].[Sp_get_dividend_analysis](@stock_code VARCHAR(6)) 
+ALTER PROCEDURE [dbo].[Sp_get_hist_dividend_analysis](@stock_code VARCHAR(6)) 
 AS 
     SELECT stock_code, 
            company, 
@@ -30,10 +30,6 @@ AS
            has_net_profit_reg_5_yrs, 
            dt_last_update 
     FROM   dbo.dividends 
-    WHERE  dt_last_update = (SELECT TOP 1 dt_last_update 
-                             FROM   dbo.dividends 
-                             ORDER  BY dt_last_update DESC) 
-           AND stock_code = IIF(@value = '', stock_code, 
-                            ISNULL(@value, stock_code)) 
-    ORDER  BY stock_code; 
+    WHERE  stock_code = @stock_code
+    ORDER BY dt_last_update DESC;
 GO
