@@ -17,7 +17,7 @@ AS
            vol_negotiated_last_21, 
            dividend_last_price, 
            company_net_profit, 
-           dividend_yeld, 
+           dividend_yield, 
            dividend_avg_payout_12_mos, 
            dividend_avg_payout_5_yrs, 
            major_share_holder, 
